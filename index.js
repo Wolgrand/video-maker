@@ -1,10 +1,16 @@
 const readline = require('readline-sync')
+const robots = {
+    text:require('./robots/text.js')
+}
 
-function start() {
+async function start() {
     const content = {}
 
     content.searchTerm = askReturnSearchTerm()
     content.prefix = askReturnPrefix()
+    content.lang = askReturnLang()
+
+    await robots.text(content)
 
     function askReturnSearchTerm() {
         return readline.question('Type a Wikipedia search term: ')
@@ -18,8 +24,12 @@ function start() {
         return selectedPrefixeText
     }
 
+    function askReturnLang() {
+        return readline.question('Type the language search: ')
+    }
 
     console.log(content)
+
 }
 
 start()
