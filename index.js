@@ -4,11 +4,13 @@ const robots = {
 }
 
 async function start() {
-    const content = {}
+    const content = {
+        maximumSentences: 7
+    }
 
     content.searchTerm = askReturnSearchTerm()
     content.prefix = askReturnPrefix()
-    content.lang = askReturnLang()
+    //content.lang = askReturnLang()
 
     await robots.text(content)
 
@@ -24,9 +26,9 @@ async function start() {
         return selectedPrefixeText
     }
 
-    function askReturnLang() {
-        return readline.question('Type the language search: ')
-    }
+    //function askReturnLang() {
+    //    return readline.question('Type the language search: ')
+    //}
 
     console.log(content)
 
